@@ -5,6 +5,13 @@
 #dice-0 { top: 120px; }
 #dice-1 { top: 250px; }
 
+.notification {
+    position: absolute;
+    top: 370px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 * {
     margin: 0;
     padding: 0;
