@@ -17,12 +17,17 @@ init();
 document.querySelector('.btn-roll').addEventListener('click', function() {
 	if (gamePlaying) {
 		//Random number
-		var dice = Math.floor(Math.random() * 6) + 1;
+		var dice = [Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1];
 
 		//display correct img
-		var diceDOM = document.querySelector('.dice');
-		diceDOM.style.display = 'block';
-		diceDOM.src = 'dice-' + dice + '.png';
+		var diceDOM = document.querySelectorAll('.dice');
+		// diceDOM.style.display = 'block';
+		// diceDOM.src = 'dice-' + dice + '.png';
+
+		diceDOM.forEach(function(die, index) {
+			die.style.display = 'block';
+			die.src = 'dice-' + dice[index] + '.png'
+		});
 
 		//update the round score IF rolled number != 1
 		if (dice !== 1) {
@@ -59,7 +64,7 @@ document.querySelector('.btn-new').addEventListener('click', init);
 
 function announceTheWinner() {
 	document.querySelector('#name-' + activePlayer).textContent = 'Winner!'
-	//document.querySelectorAll('.dice').style.display = 'none';
+
 	hideDice();
 
 	document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
@@ -78,18 +83,15 @@ function nextPlayer() {
 	document.querySelector('.player-0-panel').classList.toggle('active');
 	document.querySelector('.player-1-panel').classList.toggle('active');
 
-//	document.querySelectorAll('.dice').style.display = 'none';
-		hideDice();
+	hideDice();
 
 };
 
 function hideDice() {
 	var allDice = document.querySelectorAll('.dice');
-	// for (var i = 0; i < allDice.length; i++ ) { 
-	// 	allDice[i].style.display = 'none';
-	// }
-	allDice.forEach(function(dice) {
-		dice.style.display = 'none';
+	
+	allDice.forEach(function(die) {
+		die.style.display = 'none';
 	});
 }
 
