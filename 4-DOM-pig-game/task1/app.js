@@ -8,7 +8,7 @@ GAME RULES:
 */
 
 var scores, roundScore, activePlayer, gamePlaying, previousDie;
-var goal = 120;
+var goal = 10;//document.querySelector('.final-score').value;
 
 init();
 
@@ -16,7 +16,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 	if (gamePlaying) {
 		
 		//Random number
-		var die = 6;//Math.floor(Math.random() * 6) + 1;
+		var die = Math.floor(Math.random() * 6) + 1;
 
 		//display correct img
 		var diceDOM = document.querySelector('.dice');
@@ -50,7 +50,6 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
 		//update the UI
 		document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
-		//isWinner();
 		//check if active player won the game
 		if (scores[activePlayer] >= goal) {
 			announceTheWinner();
@@ -92,9 +91,7 @@ function init() {
 	roundScore = 0;
 	activePlayer = 0; 
 	gamePlaying = true;
-
-	scores = [14, 14];
-	previousDie = 6;
+	previousDie = 0;
 
 	// document.querySelector('#current-' + activePlayer).textContent = dice;
 	// document.querySelector('#current-' +activePlayer).innerHTML = '<em>' + dice + '</em';
