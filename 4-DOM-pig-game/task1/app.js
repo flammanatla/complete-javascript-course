@@ -25,19 +25,21 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
 		//update the round score IF rolled number != 1
 		//debugger;
-		if (die !== 1 && (die !== previousDie || previousDie !== 6)) {
+		if (die === 1) {
+			nextPlayer();
+		}
+		else if (die === previousDie && previousDie === 6) {
+			scores[activePlayer] = 0;
+			document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+			nextPlayer();
+		}
+		else {
 			roundScore += die;
 			previousDie = die;
 			document.querySelector('#current-' + activePlayer).textContent = roundScore;
 			if (roundScore >= goal) {
 				announceTheWinner();
 			}
-		} else if (die === previousDie && previousDie === 6) {
-			scores[activePlayer] = 0;
-			document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
-			nextPlayer();
-		} else {
-			nextPlayer();
 		}
 	}
 });
