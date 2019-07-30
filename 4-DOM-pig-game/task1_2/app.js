@@ -23,8 +23,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 		diceDOM.style.display = 'block';
 		diceDOM.src = 'dice-' + die + '.png';
 
-		//update the round score IF rolled number != 1
-		//debugger;
+		//update the round score IF rolled number != 1 and there was no 6 rolled twice in a row
 		if (die === 1) {
 			nextPlayer();
 		}
@@ -35,12 +34,12 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 		}
 		else {
 			roundScore += die;
-			previousDie = die;
 			document.querySelector('#current-' + activePlayer).textContent = roundScore;
 			if (roundScore >= goal) {
 				announceTheWinner();
 			}
 		}
+		previousDie = die;
 	}
 });
 
