@@ -1,0 +1,10 @@
+{
+  "name": "js-dev",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "live-server"
+  },
+  "dependencies": {
+    "live-server": "1.2.1"
+  }
+}
