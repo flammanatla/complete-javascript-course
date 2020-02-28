@@ -92,29 +92,27 @@ var tips = [];
 var totals = [];
 
 function calcAll(bills) {
-	bills.forEach(calcForOneBill);
-}
-
-function calcForOneBill(bill) {
-	var tip, total = 0;
-	if (bill < 50) {
-		tip = bill*0.2;
-	}
-	else if (bill >= 50 && bill <= 200) {
-		tip = bill*0.15;
-	}
-	else if (bill > 200) {
-		tip = bill*0.1;
-	}
-	total += bill + tip; 
-	tips.push(tip);
-	totals.push(total);
+	bills.forEach(function (bill) {
+		var tip, total = 0;
+		if (bill < 50) {
+			tip = bill*0.2;
+		}
+		else if (bill >= 50 && bill <= 200) {
+			tip = bill*0.15;
+		}
+		else if (bill > 200) {
+			tip = bill*0.1;
+		}
+		total += bill + tip; 
+		tips.push(tip);
+		totals.push(total);
+	});
 }
 
 calcAll(bills);
 
-console.log(tips);
-console.log(totals);
+console.log('challenge 3: tips= ' + tips);
+console.log('challenge 3: totals= ' + totals);
 
 /* ///////////CHALLENGE 4/////////////////
 Let's remember the first coding challenge where Mark and John compared their BMIs. Let's now implement the same functionality with objects and methods.
@@ -240,18 +238,6 @@ markExpenses.calcTips();
 
 console.log(johnExpenses);
 console.log(markExpenses);
-
-// function calcAverageTips(tips) {
-// 	// calc sum
-// 	var sum = 0;
-// 	for (var i = 0; i < tips.length; i++) {
-// 		sum += tips[i];
-// 	}
-// 	// divide sum by length
-// 	var average = sum / tips.length;
-// 	// return average
-// 	return average;
-// }
 
 function calcAverageTips(tips) {
 	var sum = 0;
