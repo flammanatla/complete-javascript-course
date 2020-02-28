@@ -241,15 +241,24 @@ markExpenses.calcTips();
 console.log(johnExpenses);
 console.log(markExpenses);
 
+// function calcAverageTips(tips) {
+// 	// calc sum
+// 	var sum = 0;
+// 	for (var i = 0; i < tips.length; i++) {
+// 		sum += tips[i];
+// 	}
+// 	// divide sum by length
+// 	var average = sum / tips.length;
+// 	// return average
+// 	return average;
+// }
+
 function calcAverageTips(tips) {
-	// calc sum
 	var sum = 0;
-	for (var i = 0; i < tips.length; i++) {
-		sum += tips[i];
-	}
-	// divide sum by length
+	tips.forEach(function (tip) {
+		sum += tip;
+	});
 	var average = sum / tips.length;
-	// return average
 	return average;
 }
 
