@@ -181,6 +181,7 @@ Mark likes to tip 20% of the bill when the bill is less than $100, 10% when the 
 6. Create a function (not a method) to calculate the average of a given array of tips. HINT: Loop over the array, and in each iteration store the current sum in a variable (starting from 0). After you have the sum of the array, divide it by the number of elements in it (that's how you calculate the average)
 7. Calculate the average tip for each family
 8. Log to the console which family paid the highest tips on average
+
 ****************************/
 
 var johnExpenses = {
@@ -239,13 +240,26 @@ markExpenses.calcTips();
 console.log(johnExpenses);
 console.log(markExpenses);
 
+// function calcAverageTips(tips) {
+// 	var sum = 0;
+// 	tips.forEach(function (tip) {
+// 		sum += tip;
+// 	});
+// 	var average = sum / tips.length;
+// 	return average;
+// }
+
+// function calcAverageTips(tips) {
+// 	return tips.reduce(function (previous, current) {
+// 		return previous + current / tips.length;
+// 	}, 0);	
+// }
+
 function calcAverageTips(tips) {
-	var sum = 0;
-	tips.forEach(function (tip) {
-		sum += tip;
-	});
-	var average = sum / tips.length;
-	return average;
+	var sum = tips.reduce(function (previous, current) {
+		return previous + current;
+	}, 0);
+	return sum / tips.length;	
 }
 
 console.log(johnExpenses.tips, calcAverageTips(johnExpenses.tips));
